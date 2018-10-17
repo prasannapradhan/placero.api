@@ -1,7 +1,7 @@
 <?php
 	$username = "placero";
 	$password = "placero";
-	$hostname = "db.pearnode.com";
+	$hostname = "placero.pearnode.com";
 	
 	// connection to the database
 	$dbhandle = mysql_connect ( $hostname, $username, $password ) or die ( "Unable to connect to Database" );
