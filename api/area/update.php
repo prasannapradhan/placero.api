@@ -4,18 +4,21 @@
 	
 	$area = $_POST ['area'];
 	$areaObj = json_decode ( $area );
-	$areaArr = ( array ) $areaObj;
+	$areaArr = (array) $areaObj;
 	
-	$area_id = $areaArr ['id'];
-	$area_name = $areaArr ['name'];
-	$area_desc = $placeArr ['description'];
-	$area_clat = $placeArr ['c_lat'];
-	$area_clng = $placeArr ['c_lng'];
-	$area_sqft = $placeArr ['sq_ft'];
-	$area_add = $placeArr ['address'];
-	
-	$area_update_sql = "update area_master set name='$area_name', desc='$area_desc', c_lat='$area_clat', 
-		c_lng='$area_clng', sq_ft='$area_sqft', address='$area_add' where id=$area_id";
+	$deviceID = $areaArr['deviceID'];
+	$centerLong = $areaArr['center_lon'];
+	$centerLat = $areaArr['center_lat'];
+	$desc = $areaArr['desc'];
+	$name = $areaArr['name'];
+	$createdBy = $areaArr['created_by'];
+	$uniqueId = $areaArr['unique_id'];
+	$msqft = $areaArr['msqft'];
+	$address = $areaArr['address'];
+	$type = $areaArr['type'];
+
+	$area_update_sql = "update AreaMaster SET deviceID = '$deviceID',center_lon='$centerLong',
+		center_lat='$centerLat',description='$desc',name='$name',msqft='$msqft',address='$address' where uniqueId='$uniqueId'";
 	mysql_query($area_update_sql);
 	
 	$resp = array ();

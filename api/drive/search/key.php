@@ -16,7 +16,6 @@
 				$user_result .= ",";
 			}
 			$user_result .="{\"unique_id\":\"".$row['unique_id']."\",\"device_id\":\""$row ["deviceID"] . "\",\"area_id\":\"" . $row ["area_id"] . "\",\"user_id\":\"" . $row ["user_id"] . "\",\"resource_id\":\"" . row ["resource_id"] . "\",\"container_id\":\"" . $row ["container_id"] . "\"name\":\"" . $row ["name"] . "\",\"type\":\"" . $row ["type"] . "\",\"content_type\":\"" . $row ["content_type"] . "\",\"mime_type\":\"" . $row ["mime_type"] . "\",\"size\":\"" . $row ["size"] . "\",\"position_id\":\"" . $row ["position_id"] . "\",\"created_on\":\"" . $row ["createdOn"] . "\",\"unique_id\":\"" . $row ["unique_id"] . "\"}";
-			
 			$i += 1;
 		}
 	}

@@ -16,20 +16,12 @@
 	}
 	
 	$user_result = "[";
-	
 	$i = 0;
 	
 	$arrLength = count ( $areaIds );
 	for($x = 0; $x < $arrLength; $x ++) {
-		
 		$query = "select * from  AreaMaster  where uniqueId ='$areaIds[$x]'";
-		
-		// echo "Area Filter Query : ".$query."\n";
-		
 		$areaSharequery = "select * from AreaShare where (source_user = '$us' or target_user = '$us')  AND area_id = '$areaIds[$x]'";
-		
-		// echo $areaSharequery."\n";
-		
 		$result = mysqli_query ( $conn, $query );
 		if (mysqli_num_rows ( $result ) > 0) {
 			// output data of each row
@@ -37,11 +29,7 @@
 				if ($i > 0) {
 					$user_result .= ",";
 				}
-				
 				$user_result .= "{\"area\":{\"type\":\"" . $row ["type"] . "\",\"id\":\"" . $row ["id"] . "\",\"center_lon\":\"" . $row ["center_lon"] . "\",\"center_lat\":\"" . $row ["center_lat"] . "\",\"description\":\"" . $row ["description"] . "\",\"name\":\"" . $row ["name"] . "\",\"created_by\":\"" . $row ["createdBy"] . "\",\"unique_id\":\"" . $row ["uniqueId"] . "\",\"deviceID\":\"" . $row ["deviceID"] . "\",\"measure_sqft\":\"" . $row ["msqft"] . "\",\"address\":\"" . $row ["address"] . "\"}";
-				
-				// drs
-				
 				$dRSQuery = "select * from DriveMaster where area_id = \"" . $row ["uniqueId"] . "\"";
 				$k = 0;
 				$drs_result = mysqli_query ( $conn, $dRSQuery );

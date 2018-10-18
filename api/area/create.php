@@ -4,22 +4,26 @@
 	
 	$area = $_POST ['area'];
 	$areaObj = json_decode ( $area );
-	$areaArr = ( array ) $areaObj;
+	$areaArr = (array) $areaObj;
 	
-	$area_name = $areaArr ['name'];
-	$area_desc = $placeArr ['description'];
-	$area_clat = $placeArr ['c_lat'];
-	$area_clng = $placeArr ['c_lng'];
-	$area_sqft = $placeArr ['sq_ft'];
-	$area_add = $placeArr ['address'];
+	$deviceID = $areaArr['deviceID'];
+	$centerLong = $areaArr['center_lon'];
+	$centerLat = $areaArr['center_lat'];
+	$desc = $areaArr['desc'];
+	$name = $areaArr['name'];
+	$createdBy = $areaArr['created_by'];
+	$uniqueId = $areaArr['unique_id'];
+	$msqft = $areaArr['msqft'];
+	$address = $areaArr['address'];
+	$type = $areaArr['type'];
 	
-	$area_insert_sql = "INSERT INTO area_master (name, desc, c_lat, c_lng, sq_ft, address) 
-			VALUES ('$area_name', '$area_desc', '$area_clat', '$area_clng', '$area_sqft', '$area_add' )";
+	$area_insert_sql = "insert into AreaMaster (deviceID,center_lon,center_lat,description,name,createdBy,uniqueId,msqft,address,type) 
+		values('$deviceID','$centerLong','$centerLat','$desc','$name','$createdBy','$uniqueId','$msqft','$address','$type')";
 	mysql_query ($area_insert_sql);
-
-	$area_id = mysql_insert_id();
-	$area['id'] = $area_id;
-
+	
+	$area_share_insert_sql = "insert into AreaShare (source_user,area_id,function_codes) values ('$createdBy','$uniqueId','full_control')";
+	mysql_query($area_share_insert_sql);
+	
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
 	$resp ['status_msg'] = 'Area created successfully';

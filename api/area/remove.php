@@ -6,8 +6,9 @@
 	$areaObj = json_decode ( $area );
 	$areaArr = (array) $areaObj;
 	
-	$area_id = $areaArr ['id'];
-	$area_delete_sql = "delete from area_master where id=$area_id";
+	$uniqueId = $areaArr['unique_id'];
+	
+	$area_delete_sql = "delete from AreaMaster where uniqueId = '$uniqueId'";
 	mysql_query ($area_delete_sql);
 	
 	$resp = array ();
