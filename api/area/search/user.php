@@ -1,5 +1,7 @@
 <?php
-	require 'connection_init.php';
+	header ( "Access-Control-Allow-Origin: *" );
+	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
+	
 	$us = isset ( $_GET ["us"] ) ? $_GET ["us"] : "";
 	$uniqueAreaQuery = "select distinct(area_id) from AreaShare where source_user = '$us' or target_user = '$us'";
 	
