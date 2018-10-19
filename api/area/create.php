@@ -17,7 +17,7 @@
 	$area_insert_sql = "insert into AreaMaster (deviceID,center_lon,center_lat,description,name,createdBy,uniqueId,msqft,address,type) 
 		values('','$areaCenter->lng','$areaCenter->lat','$areaObj->description','$areaObj->name',
 		'$areaObj->createdBy','$areaObj->uniqueId','$areaMeasure->sqFeet','$areaAddress->storable','$areaObj->type')";
-
+	error_log($area_insert_sql);
 	mysql_query ($area_insert_sql);
 	
 	foreach ($areaPermissions as $permission) {
