@@ -52,7 +52,7 @@
 	
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
-	$resp ['status_msg'] = 'Area deleted successfully';
+	$resp ['status_msg'] = 'User areas fetched successfully';
 	$resp ['data'] = $area_records;
 	
 	echo json_encode($resp);
