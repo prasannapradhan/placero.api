@@ -11,8 +11,8 @@
 		$area_id = $row->area_id;
 		$area_record = array();
 		
-		$share_export = var_export($row, true);
-		error_log($share_export);
+		//$share_export = var_export($row, true);
+		//error_log($share_export);
 		
 		$area_qry = "select * from  AreaMaster  where uniqueId='$row->area_id'";
 		$area_result = mysql_query($area_qry);
@@ -20,8 +20,8 @@
 		$area_record['permission'] = $row;
 		mysql_free_result($area_result);
 		
-		$area_details_export = var_export($area_record, true);
-		error_log($area_details_export);
+		//$area_details_export = var_export($area_record, true);
+		//error_log($area_details_export);
 		
 		$positions_qry = "select * from PositionMaster where uniqueAreaId='$row->area_id'";
 		$positions_result = mysql_query($positions_qry);
@@ -32,8 +32,8 @@
 		$area_record['positions'] = $positions_arr;
 		mysql_free_result($positions_result);
 		
-		$area_positions_export = var_export($area_record, true);
-		error_log($area_positions_export);
+		//$area_positions_export = var_export($area_record, true);
+		//error_log($area_positions_export);
 		
 		$resources_qry = "select * from DriveMaster where area_id ='$row->area_id'";
 		$resources_result = mysql_query($resources_qry);
@@ -44,8 +44,8 @@
 		mysql_free_result($resources_result);
 		$area_record['resources'] = $resources_arr;
 
-		$area_resources_export = var_export($area_record, true);
-		error_log($area_resources_export);
+		//$area_resources_export = var_export($area_record, true);
+		//error_log($area_resources_export);
 		
 		array_push($area_records, $area_record);
 	}
