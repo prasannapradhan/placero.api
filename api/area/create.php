@@ -6,6 +6,8 @@
 	$areaObj = json_decode ( $area );
 	$areaArr = (array) $areaObj;
 	
+	error_log($areaArr);
+	
 	$deviceID = $areaArr['deviceID'];
 	$centerLong = $areaArr['center_lon'];
 	$centerLat = $areaArr['center_lat'];
