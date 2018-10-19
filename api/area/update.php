@@ -2,23 +2,19 @@
 	header ( "Access-Control-Allow-Origin: *" );
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
-	$area = $_POST ['area'];
-	$areaObj = json_decode ( $area );
-	$areaArr = (array) $areaObj;
+	$area = $_POST['area'];
+	$areaObj = json_decode($area);
 	
-	$deviceID = $areaArr['deviceID'];
-	$centerLong = $areaArr['center_lon'];
-	$centerLat = $areaArr['center_lat'];
-	$desc = $areaArr['desc'];
-	$name = $areaArr['name'];
-	$createdBy = $areaArr['created_by'];
-	$uniqueId = $areaArr['unique_id'];
-	$msqft = $areaArr['msqft'];
-	$address = $areaArr['address'];
-	$type = $areaArr['type'];
+	$areaAddress = $areaObj->address;
+	$areaMeasure = $areaObj->measure;
+	$areaCenter = $areaObj->centerPosition;
+	$areaPositions = $areaObj->positions;
+	$areaResources = $areaObj->resources;
+	$areaPermissions = $areaObj->permissions;
 
-	$area_update_sql = "update AreaMaster SET deviceID = '$deviceID',center_lon='$centerLong',
-		center_lat='$centerLat',description='$desc',name='$name',msqft='$msqft',address='$address' where uniqueId='$uniqueId'";
+	$area_update_sql = "update AreaMaster SET center_lon='$areaCenter->lng',
+		center_lat='$areaCenter->lat',description='$areaObj->description',name='$areaObj->name',msqft='$areaMeasure->sqFeet',
+		address='$areaAddress->storable' where uniqueId='$areaObj->uniqueId'";
 	mysql_query($area_update_sql);
 	
 	$resp = array ();
