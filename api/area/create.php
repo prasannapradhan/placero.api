@@ -19,6 +19,7 @@
 	
 	$area_insert_sql = "insert into AreaMaster (deviceID,center_lon,center_lat,description,name,createdBy,uniqueId,msqft,address,type) 
 		values('$deviceID','$centerLong','$centerLat','$desc','$name','$createdBy','$uniqueId','$msqft','$address','$type')";
+	error_log($area_insert_sql);
 	mysql_query ($area_insert_sql);
 	
 	$area_share_insert_sql = "insert into AreaShare (source_user,area_id,function_codes) values ('$createdBy','$uniqueId','full_control')";
