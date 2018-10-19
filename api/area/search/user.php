@@ -55,4 +55,5 @@
 	$resp ['status_msg'] = 'Area deleted successfully';
 	$resp ['data'] = $area_records;
 	
+	echo json_encode($resp);
 ?>

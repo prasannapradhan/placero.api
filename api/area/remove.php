@@ -21,4 +21,6 @@
 	$resp ['status_code'] = 'SUCCESS';
 	$resp ['status_msg'] = 'Area deleted successfully';
 	$resp ['ret_obj'] = $area;
+	
+	echo json_encode($resp);
 ?>
