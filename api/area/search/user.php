@@ -5,7 +5,6 @@
 	$us = $_GET["us"];
 	$area_share_qry = "select * from AreaShare where source_user='$us' or target_user='$us'";
 	$result = mysql_query($area_share_qry);
-	$resp = array();
 	
 	$area_records = array();
 	while ($row = mysql_fetch_object($result)) {
@@ -37,4 +36,10 @@
 		$area_record['resources'] = $resources_arr;
 		array_push($area_records, $area_record);
 	}
+	
+	$resp = array ();
+	$resp ['status_code'] = 'SUCCESS';
+	$resp ['status_msg'] = 'Area deleted successfully';
+	$resp ['data'] = $area_records;
+	
 ?>
