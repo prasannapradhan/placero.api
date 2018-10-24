@@ -35,7 +35,7 @@
 		//$area_positions_export = var_export($area_record, true);
 		//error_log($area_positions_export);
 		
-		$resources_qry = "select * from DriveMaster where area_id ='$row->area_id'";
+		$resources_qry = "select * from media where place_ref ='$row->area_id'";
 		$resources_result = mysql_query($resources_qry);
 		$resources_arr = array();
 		while ($resource_row = mysql_fetch_object($resources_result)) {
