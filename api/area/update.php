@@ -12,9 +12,9 @@
 	$areaResources = $areaObj->resources;
 	$areaPermissions = $areaObj->permissions;
 
-	$area_update_sql = "update AreaMaster SET center_lon='$areaCenter->lng',
+	$area_update_sql = "update area SET center_lon='$areaCenter->lng',
 		center_lat='$areaCenter->lat',description='$areaObj->description',name='$areaObj->name',msqft='$areaMeasure->sqFeet',
-		address='$areaAddress->storable' where uniqueId='$areaObj->uniqueId'";
+		address='$areaAddress->storable' where id='$areaObj->id'";
 	mysql_query($area_update_sql);
 	
 	$resp = array ();

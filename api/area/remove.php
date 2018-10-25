@@ -12,7 +12,7 @@
 	$areaResources = $areaObj->resources;
 	$areaPermissions = $areaObj->permissions;
 	
-	$area_delete_sql = "delete from AreaMaster where uniqueId = '$areaObj->uniqueId'";
+	$area_delete_sql = "delete from area where id= '$areaObj->id'";
 	mysql_query ($area_delete_sql);
 	
 	// TODO Cascade delete other elements.

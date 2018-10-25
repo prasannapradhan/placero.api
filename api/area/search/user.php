@@ -14,7 +14,7 @@
 		//$share_export = var_export($row, true);
 		//error_log($share_export);
 		
-		$area_qry = "select * from  AreaMaster  where uniqueId='$row->area_id'";
+		$area_qry = "select * from area where id='$row->area_id'";
 		$area_result = mysql_query($area_qry);
 		$area_record['detail'] = mysql_fetch_object($area_result);
 		$area_record['permission'] = $row;
