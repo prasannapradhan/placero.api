@@ -11,19 +11,17 @@
 		$area_id = $row->area_id;
 		$area_record = array();
 		
-		//$share_export = var_export($row, true);
-		//error_log($share_export);
+		error_log("Fetching details for area [$area_id]");
 		
-		$area_qry = "select * from area where id='$row->area_id'";
+		$area_qry = "select * from area where id='$area_id'";
+		error_log("Query [$area_qry]");
+		
 		$area_result = mysql_query($area_qry);
 		$area_record['detail'] = mysql_fetch_object($area_result);
 		$area_record['permission'] = $row;
 		mysql_free_result($area_result);
 		
-		//$area_details_export = var_export($area_record, true);
-		//error_log($area_details_export);
-		
-		$positions_qry = "select * from position where place_ref='$row->area_id'";
+		$positions_qry = "select * from position where place_ref='$area_id'";
 		$positions_result = mysql_query($positions_qry);
 		$positions_arr = array();
 		while ($position_row = mysql_fetch_object($positions_result)) {
@@ -32,10 +30,7 @@
 		$area_record['positions'] = $positions_arr;
 		mysql_free_result($positions_result);
 		
-		//$area_positions_export = var_export($area_record, true);
-		//error_log($area_positions_export);
-		
-		$resources_qry = "select * from media where place_ref ='$row->area_id'";
+		$resources_qry = "select * from media where place_ref ='$area_id'";
 		$resources_result = mysql_query($resources_qry);
 		$resources_arr = array();
 		while ($resource_row = mysql_fetch_object($resources_result)) {
@@ -44,9 +39,6 @@
 		mysql_free_result($resources_result);
 		$area_record['resources'] = $resources_arr;
 
-		//$area_resources_export = var_export($area_record, true);
-		//error_log($area_resources_export);
-		
 		array_push($area_records, $area_record);
 	}
 	
