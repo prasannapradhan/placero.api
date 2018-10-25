@@ -23,7 +23,7 @@
 		//$area_details_export = var_export($area_record, true);
 		//error_log($area_details_export);
 		
-		$positions_qry = "select * from PositionMaster where uniqueAreaId='$row->area_id'";
+		$positions_qry = "select * from position where place_ref='$row->area_id'";
 		$positions_result = mysql_query($positions_qry);
 		$positions_arr = array();
 		while ($position_row = mysql_fetch_object($positions_result)) {

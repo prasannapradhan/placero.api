@@ -13,8 +13,10 @@
 	$msqft = isset ( $_POST ["msqft"] ) ? $_POST ["msqft"] : "";
 	$address = isset ( $_POST ["address"] ) ? $_POST ["address"] : "";
 	$type = isset ( $_POST ["type"] ) ? $_POST ["type"] : "self";
+
 	if ($queryType == 'insert') {
-		$query = "insert into AreaMaster (deviceID , center_lon , center_lat , description , name , createdBy , uniqueId , msqft , address , type) values('$deviceID','$centerLong','$centerLat','$desc','$name','$createdBy','$uniqueId','$msqft','$address','$type')";
+		$query = "insert into AreaMaster (deviceID , center_lon , center_lat , description , name , createdBy , uniqueId , 
+			msqft , address , type) values('$deviceID','$centerLong','$centerLat','$desc','$name','$createdBy','$uniqueId','$msqft','$address','$type')";
 		mysqli_query ( $conn, $query );
 		mysqli_close ( $conn );
 		
@@ -26,9 +28,10 @@
 		mysqli_query ( $conns, $querys );
 		mysqli_close ( $conns );
 	} else if ($queryType == 'update') {
-		$query = "update AreaMaster SET deviceID = '$deviceID' , center_lon = '$centerLong' , center_lat = '$centerLat', description = '$desc' , name = '$name' , msqft = '$msqft' , address = '$address' where uniqueId = '$uniqueId'";
-		mysqli_query ( $conn, $query );
-		mysqli_close ( $conn );
+		$query = "update AreaMaster SET deviceID = '$deviceID' , center_lon = '$centerLong' , center_lat = '$centerLat', description = '$desc' , 
+			name = '$name' , msqft = '$msqft' , address = '$address' where uniqueId = '$uniqueId'";
+		mysqli_query ($conn, $query);
+		mysqli_close ($conn);
 	} else if ($queryType == 'delete') {
 		$query = "delete from AreaMaster where uniqueId = '$uniqueId'";
 		mysqli_query ( $conn, $query );
