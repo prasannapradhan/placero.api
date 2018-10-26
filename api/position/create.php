@@ -4,15 +4,10 @@
 	
 	$position = $_POST['position'];
 	$posObj = json_decode($position);
-	$posArr = (array) $posObj;
 	
-	$id = $posArr['id'];
-	$name = $posArr['name'];
-	$desc = $posArr['description'];
-	$lat = $posArr['lat'];
-	$lng = $posArr['lng'];
-	
-	$pos_insert_sql = "INSERT INTO position (id, name, desc, lat, lng) VALUES('$id', '$name', '$desc', '$lat', '$lng')";
+	$pos_insert_sql = "INSERT INTO position (id, area_ref, device_id, name, description, lat, lng, tags, type, created_on) 
+		VALUES('$posObj->id', '$posObj->areaRef', '', $posObj->name', '$posObj->description', '$posObj->lat', '$posObj->lng', 
+		'$posObj->tags', '$posObj->type', '$posObj->createdOn')";
 	mysql_query($pos_insert_sql);
 	
 	$resp = array();
