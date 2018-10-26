@@ -13,7 +13,7 @@
 	mysql_query ($media_insert_sql);
 	
 	$media_id = mysql_insert_id();
-	$media['id'] = $media_id;
+	$mediaObj->id = $media_id;
 	
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
