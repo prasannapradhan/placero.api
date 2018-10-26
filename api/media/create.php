@@ -18,7 +18,7 @@
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
 	$resp ['status_msg'] = 'Media created successfully';
-	$resp ['ret_obj'] = $media;
+	$resp ['ret_obj'] = $mediaObj;
 	
 	echo json_encode($resp);
 ?>
