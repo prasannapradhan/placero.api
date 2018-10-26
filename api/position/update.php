@@ -12,7 +12,7 @@
 	$lat = $posArr['lat'];
 	$lng = $posArr['lng'];
 	
-	$update_sql = "update position set name='$name', desc = '$desc', lat='$lat', lng='$lng', address='$address' where id='$pos_id'";
+	$update_sql = "update position set name='$name', desc = '$desc', lat='$lat', lng='$lng' where id='$pos_id'";
 	mysql_query($update_sql);
 	
 	$resp = array();

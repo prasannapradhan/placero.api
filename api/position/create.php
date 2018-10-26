@@ -12,7 +12,7 @@
 	$lat = $posArr['lat'];
 	$lng = $posArr['lng'];
 	
-	$pos_insert_sql = "INSERT INTO position (id, name, desc, lat, lng, address) VALUES('$id', '$name', '$desc', '$lat', '$lng', '$address')";
+	$pos_insert_sql = "INSERT INTO position (id, name, desc, lat, lng) VALUES('$id', '$name', '$desc', '$lat', '$lng')";
 	mysql_query($pos_insert_sql);
 	
 	$resp = array();
