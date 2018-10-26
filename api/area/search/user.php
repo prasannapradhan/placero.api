@@ -30,14 +30,14 @@
 		$area_record['positions'] = $positions_arr;
 		mysql_free_result($positions_result);
 		
-		$resources_qry = "select * from media where area_ref ='$area_id'";
+		$resources_qry = "select * from place_media where place_ref ='$area_id'";
 		$resources_result = mysql_query($resources_qry);
 		$resources_arr = array();
 		while ($resource_row = mysql_fetch_object($resources_result)) {
 			$resources_arr[] = $resource_row;
 		}
 		mysql_free_result($resources_result);
-		$area_record['resources'] = $resources_arr;
+		$area_record['medias'] = $resources_arr;
 
 		array_push($area_records, $area_record);
 	}
