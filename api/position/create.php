@@ -6,7 +6,7 @@
 	$posObj = json_decode($position);
 	
 	$pos_insert_sql = "INSERT INTO position (id, area_ref, device_id, name, description, lat, lng, tags, type, created_on) 
-		VALUES('$posObj->id', '$posObj->areaRef', '', '$posObj->name', '$posObj->description', '$posObj->lat', '$posObj->lng', 
+		VALUES('$posObj->id', '$posObj->areaRef', '', '$posObj->name', '$posObj->description', $posObj->lat, $posObj->lng, 
 		'$posObj->tags', '$posObj->type', '$posObj->createdOn')";
 	error_log($pos_insert_sql);
 	mysql_query($pos_insert_sql);
