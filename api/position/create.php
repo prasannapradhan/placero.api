@@ -6,17 +6,15 @@
 	$posObj = json_decode($position);
 	$posArr = (array) $posObj;
 	
+	$id = $posArr['id'];
 	$name = $posArr['name'];
 	$desc = $posArr['description'];
 	$lat = $posArr['lat'];
 	$lng = $posArr['lng'];
 	$address = $posArr['address'];
 	
-	$pos_insert_sql = "INSERT INTO position_master (name, desc, lat, lng, address) VALUES('$name', '$desc', '$lat', '$lng', '$address')";
+	$pos_insert_sql = "INSERT INTO position (id, name, desc, lat, lng, address) VALUES('$id', '$name', '$desc', '$lat', '$lng', '$address')";
 	mysql_query($pos_insert_sql);
-	
-	$pos_id = mysql_insert_id();
-	$position['id'] = $pos_id;
 	
 	$resp = array();
 	$resp['status_code'] = 'SUCCESS';

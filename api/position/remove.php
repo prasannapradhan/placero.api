@@ -8,7 +8,7 @@
 	
 	$pos_id = $posArr['id'];
 	
-	$remove_sql = "delete from position_master where id=$pos_id";
+	$remove_sql = "delete from position where id='$pos_id'";
 	mysql_query($remove_sql);
 	
 	$resp = array();
