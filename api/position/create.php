@@ -11,7 +11,6 @@
 	$desc = $posArr['description'];
 	$lat = $posArr['lat'];
 	$lng = $posArr['lng'];
-	$address = $posArr['address'];
 	
 	$pos_insert_sql = "INSERT INTO position (id, name, desc, lat, lng, address) VALUES('$id', '$name', '$desc', '$lat', '$lng', '$address')";
 	mysql_query($pos_insert_sql);

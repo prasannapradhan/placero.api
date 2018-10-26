@@ -11,7 +11,6 @@
 	$desc = $posArr['description'];
 	$lat = $posArr['lat'];
 	$lng = $posArr['lng'];
-	$address = $posArr['address'];
 	
 	$update_sql = "update position set name='$name', desc = '$desc', lat='$lat', lng='$lng', address='$address' where id='$pos_id'";
 	mysql_query($update_sql);
