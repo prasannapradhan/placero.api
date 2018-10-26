@@ -20,4 +20,6 @@
 	$resp['status_code'] = 'SUCCESS';
 	$resp['status_msg'] = 'Position created successfully';
 	$resp['ret_obj'] = $position;
+	
+	echo json_encode($resp);
 ?>
