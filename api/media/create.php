@@ -5,7 +5,7 @@
 	$media = $_POST['media'];
 	$mediaObj = json_decode($media);
 	
-	$media_insert_sql = "insert into media (place_ref, name, type, tf_name, tf_path, rf_name, rf_path, lat, lng) 
+	$media_insert_sql = "insert into place_media (place_ref, name, type, tf_name, tf_path, rf_name, rf_path, lat, lng) 
 		values('$mediaObj->placeRef','$mediaObj->name','$mediaObj->type','$mediaObj->tfName','$mediaObj->tfPath',
 		'$mediaObj->rfName','$mediaObj->rfPath','$mediaObj->lat','$mediaObj->lng')";
 	
