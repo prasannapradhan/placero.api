@@ -4,15 +4,8 @@
 	
 	$position = $_POST['position'];
 	$posObj = json_decode($position);
-	$posArr = (array) $posObj;
 	
-	$pos_id = $posArr['id'];
-	$name = $posArr['name'];
-	$desc = $posArr['description'];
-	$lat = $posArr['lat'];
-	$lng = $posArr['lng'];
-	
-	$update_sql = "update position set name='$name', desc = '$desc', lat='$lat', lng='$lng' where id='$pos_id'";
+	$update_sql = "update position set description='$posObj->description', tags='$posObj->tags', type='$posObj->type'";
 	mysql_query($update_sql);
 	
 	$resp = array();

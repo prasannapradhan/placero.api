@@ -4,11 +4,8 @@
 	
 	$position = $_POST['position'];
 	$posObj = json_decode($position);
-	$posArr = (array) $posObj;
 	
-	$pos_id = $posArr['id'];
-	
-	$remove_sql = "delete from position where id='$pos_id'";
+	$remove_sql = "delete from position where id='$posObj->id'";
 	mysql_query($remove_sql);
 	
 	$resp = array();
