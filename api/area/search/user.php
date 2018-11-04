@@ -11,11 +11,8 @@
 		$area_id = $row->area_id;
 		$area_record = array();
 		
-		error_log("Fetching details for area [$area_id]");
-		
 		$area_qry = "select * from area where id='$area_id'";
-		error_log("Query [$area_qry]");
-		
+		error_log("Area detail query [$area_qry]");
 		$area_result = mysql_query($area_qry);
 		$area_record['detail'] = mysql_fetch_object($area_result);
 		$area_record['permission'] = $row;

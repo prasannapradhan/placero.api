@@ -15,7 +15,14 @@
 	$area_delete_sql = "delete from area where id= '$areaObj->id'";
 	mysql_query ($area_delete_sql);
 	
-	// TODO Cascade delete other elements.
+	$area_share_delete_sql = "delete from AreaShare where area_id= '$areaObj->id'";
+	mysql_query ($area_share_delete_sql);
+
+	$area_pos_delete_sql = "delete from position where area_ref= '$areaObj->id'";
+	mysql_query ($area_pos_delete_sql);
+
+	$area_media_delete_sql = "delete from place_media where place_ref= '$areaObj->id'";
+	mysql_query ($area_media_delete_sql);
 	
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
