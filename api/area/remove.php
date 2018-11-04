@@ -5,10 +5,6 @@
 	$area = $_POST['area'];
 	$areaObj = json_decode($area);
 	
-	$areaAddress = $areaObj->address;
-	$areaMeasure = $areaObj->measure;
-	$areaCenter = $areaObj->centerPosition;
-	
 	$area_delete_sql = "delete from area where id= '$areaObj->id'";
 	mysql_query ($area_delete_sql);
 	
