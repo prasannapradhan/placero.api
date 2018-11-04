@@ -7,8 +7,9 @@
 		$sk = $_GET['sk'];
 	}
 	
-	$area_search_qry = "select a.* from AreaShare as LEFT JOIN area a on as.area_id=a.id 
-					   where as.target_user='any'";
+	$area_search_qry = "select a.* from AreaShare ash 
+						LEFT JOIN area a on ash.area_id=a.id 
+					    where ash.target_user='any'";
 	if($sk != ""){
 		$area_search_qry = $area_search_qry." AND (a.name like '%$sk%' OR a.description like '%$sk%' OR a.address like '%sk%')";
 	}
