@@ -7,7 +7,7 @@
 		$sk = $_GET['sk'];
 	}
 	
-	$area_search_qry = "select a.* from AreaShare ash 
+	$area_search_qry = "select a.*,ash.source_user from AreaShare ash 
 						LEFT JOIN area a on ash.area_id=a.id 
 					    where ash.target_user='any'";
 	if($sk != ""){
@@ -21,7 +21,12 @@
 		$area_record = array();
 		
 		$area_record['detail'] = $row;
-		$area_record['permission'] = array();
+		
+		$permission = array();
+		$permission['user_id'] = $row->source_user;
+		$permission['area_id'] = $row->id;
+		$permission['function_code'] = 'any';
+		$area_record['permission'] = $permission;
 		
 		$positions_qry = "select * from position where area_ref='$area_id'";
 		$positions_result = mysql_query($positions_qry);
