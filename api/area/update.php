@@ -6,6 +6,7 @@
 	$areaObj = json_decode($area);
 	
 	$areaAddress = $areaObj->address;
+	$aaTags = $areaAddress->tags;
 	$areaMeasure = $areaObj->measure;
 	$areaCenter = $areaObj->centerPosition;
 	$areaPositions = $areaObj->positions;
@@ -16,6 +17,15 @@
 		name='$areaObj->name',msqft='$areaMeasure->sqFeet',address='$areaAddress->storable' where id='$areaObj->id'";
 	error_log($area_update_sql);
 	mysql_query($area_update_sql);
+	
+	$area_tag_rem_sql = "DELETE FROM tag_master where context_id='$areaObj->id'";
+	$ctime = microtime(true);
+	mysql_query($area_tag_rem_sql);
+	foreach ($aaTags as $tag) {
+		$area_tag_ins_sql = "INSERT INTO tag_master (name, type, type_field, context, context_id, created_on) 
+							 VALUES ('$tag->name', '$tag->type', '$tag->typeField', 'area', '$areaObj->id', '$ctime')";
+		mysql_query($area_tag_ins_sql);
+	}
 	
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
