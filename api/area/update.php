@@ -16,8 +16,9 @@
 	mysql_query($area_update_sql);
 	
 	$area_tag_rem_sql = "DELETE FROM tag_master where context_id='$areaObj->id'";
-	$ctime = microtime(true);
 	mysql_query($area_tag_rem_sql);
+	
+	$ctime = microtime(true);
 	foreach ($aaTags as $tag) {
 		$area_tag_ins_sql = "INSERT INTO tag_master (name, type, type_field, context, context_id, created_on) 
 							 VALUES ('$tag->name', '$tag->type', '$tag->typeField', 'area', '$areaObj->id', '$ctime')";
