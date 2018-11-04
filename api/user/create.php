@@ -3,6 +3,10 @@
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
 	$userObj = json_decode($_POST['user']);
+	
+	$user_del_qry = "DELETE FROM user_master where email='$userObj->email'";
+	mysql_query($user_del_qry);
+	
 	$query = "insert into user_master (displayName, email , familyName , givenName , photoUrl , authSystemId , deviceID ) 
 		VALUES ('$userObj->displayName','$userObj->email','$userObj->familyName','$userObj->givenName','$userObj->photoUrl',
 		'$userObj->authSystemId','')";
