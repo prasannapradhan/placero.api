@@ -3,7 +3,7 @@
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
 	$us = $_GET["us"];
-	$area_share_qry = "select * from AreaShare where source_user='$us' or target_user='$us' and target_user <> 'any'";
+	$area_share_qry = "select * from AreaShare where (source_user='$us' or target_user='$us') and target_user <> 'any'";
 	$result = mysql_query($area_share_qry);
 	
 	$area_records = array();
