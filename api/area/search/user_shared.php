@@ -12,10 +12,14 @@
 		$area_record = array();
 		
 		$area_qry = "select * from area where id='$area_id'";
-		error_log("Area detail query [$area_qry]");
 		$area_result = mysql_query($area_qry);
 		$area_record['detail'] = mysql_fetch_object($area_result);
-		$area_record['permission'] = $row;
+		
+		$permission = array();
+		$permission['user_id'] = $row->source_user;
+		$permission['area_id'] = $row->area_id;
+		$permission['function_code'] = $row->function_codes;
+		$area_record['permission'] = $permission;
 		mysql_free_result($area_result);
 		
 		$positions_qry = "select * from position where area_ref='$area_id'";
