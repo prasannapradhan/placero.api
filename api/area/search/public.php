@@ -17,7 +17,7 @@
 	
 	$area_records = array();
 	while ($row = mysql_fetch_object($result)) {
-		$area_id = $row->area_id;
+		$area_id = $row->id;
 		$area_record = array();
 		
 		$area_record['detail'] = $row;
