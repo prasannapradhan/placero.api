@@ -6,7 +6,7 @@
 	$mediaObj = json_decode($media);
 	
 	$media_insert_sql = "insert into place_media (id, place_ref, name, type, tf_name, tf_path, rf_name, rf_path, lat, lng) 
-		values('$mediaObj->id', $mediaObj->placeRef','$mediaObj->name','$mediaObj->type','$mediaObj->tfName','$mediaObj->tfPath',
+		values('$mediaObj->id', '$mediaObj->placeRef','$mediaObj->name','$mediaObj->type','$mediaObj->tfName','$mediaObj->tfPath',
 		'$mediaObj->rfName','$mediaObj->rfPath','$mediaObj->lat','$mediaObj->lng')";
 	
 	mysql_query ($media_insert_sql);
