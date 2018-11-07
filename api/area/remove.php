@@ -8,7 +8,7 @@
 	$area_delete_sql = "delete from area where id= '$areaObj->id'";
 	mysql_query ($area_delete_sql);
 	
-	$area_share_delete_sql = "delete from AreaShare where area_id= '$areaObj->id'";
+	$area_share_delete_sql = "delete from area_share where area_id= '$areaObj->id'";
 	mysql_query ($area_share_delete_sql);
 
 	$area_pos_delete_sql = "delete from position where area_ref= '$areaObj->id'";

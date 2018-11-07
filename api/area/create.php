@@ -16,7 +16,7 @@
 	mysql_query ($area_insert_sql);
 	
 	foreach ($areaPermissions as $permission) {
-		$area_share_insert_sql = "insert into AreaShare (source_user,area_id,function_codes) 
+		$area_share_insert_sql = "insert into area_share (source_user,area_id,function_codes) 
 			values ('$permission->userId','$permission->areaId','$permission->functionCode')";
 		mysql_query($area_share_insert_sql);
 	}
