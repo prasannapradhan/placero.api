@@ -7,7 +7,6 @@
 	
 	$tag_insert_sql = "INSERT INTO tag_master (name, type, type_field, context, context_id, created_on) 
 		VALUES('$tagObj->name', '$tagObj->type', '$tagObj->typeField', '$tagObj->context', '$tagObj->contextId', '$tagObj->createdOn')";
-	error_log($tag_insert_sql);
 	mysql_query($tag_insert_sql);
 	
 	$resp = array();

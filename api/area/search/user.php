@@ -35,7 +35,7 @@
 		}
 		mysql_free_result($resources_result);
 		$area_record['medias'] = $resources_arr;
-
+		
 		array_push($area_records, $area_record);
 	}
 	

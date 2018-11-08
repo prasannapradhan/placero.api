@@ -5,7 +5,7 @@
 	$position = $_POST['position'];
 	$posObj = json_decode($position);
 	
-	$update_sql = "update position set description='$posObj->description', tags='$posObj->tags', type='$posObj->type'";
+	$update_sql = "update position set description='$posObj->description', tags='$posObj->tags', type='$posObj->type' where id='$posObj->id'";
 	mysql_query($update_sql);
 	
 	$resp = array();
