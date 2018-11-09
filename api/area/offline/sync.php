@@ -3,6 +3,7 @@
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
 	$areas = json_decode($_POST['areas']);
+	$resp = array();
 	foreach ($areas as $areaObj) {
 		$dirty_action = $areaObj->dirtyAction;
 		if($dirty_action == "create"){
@@ -18,8 +19,8 @@
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
+			$resp[$areaObj->id] = "CREATE:SUCCESS";
 			curl_close($httpRequest);
-			echo json_encode($result);
 		}else if($dirty_action == "update"){
 			// Call update api with the data
 			error_log("Updating offline area [$areaObj->id]");
@@ -33,8 +34,8 @@
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
+			$resp[$areaObj->id] = "UPDATE:SUCCESS";
 			curl_close($httpRequest);
-			echo json_encode($result);
 		}else if($dirty_action == "remove"){
 			// Call remove api with the data
 			error_log("Removing offline area [$areaObj->id]");
@@ -48,8 +49,14 @@
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
+			$resp[$areaObj->id] = "REMOVE:SUCCESS";
 			curl_close($httpRequest);
-			echo json_encode($result);
 		}
 	}
+	
+	$result = array ();
+	$result ['status_code'] = 'SUCCESS';
+	$result ['status_msg'] = 'Sync performed successfully';
+	$result ['ret_obj'] = $resp;
+	
 ?>

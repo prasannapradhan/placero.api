@@ -2,8 +2,14 @@
 	header("Access-Control-Allow-Origin: *");
 	include($_SERVER["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
-	$position = $_POST['position'];
-	$posObj = json_decode($position);
+	if(isset($_POST['position'])){
+		$position = $_POST['position'];
+		$posObj = json_decode($position);
+	}else {
+		$jsonInput = file_get_contents("php://input");
+		$inputObj = json_decode($jsonInput);
+		$posObj = $inputObj->area;
+	}
 	
 	$update_sql = "update position set description='$posObj->description', tags='$posObj->tags', type='$posObj->type' where id='$posObj->id'";
 	mysql_query($update_sql);

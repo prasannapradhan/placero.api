@@ -9,44 +9,47 @@
 			// Call create api with the data
 			error_log("Creating new offline position [$positionObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/position/create.php';
-			$options = array(
-					'http' => array(
-							'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-							'method'  => 'POST',
-							'content' => json_encode($positionObj),
-					),
-			);
-			$context  = stream_context_create($options);
-			$response = file_get_contents($url, false, $context);
-			error_log($response);
+			$data = array('position' => $positionObj);
+			$httpRequest = curl_init();
+			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($httpRequest, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+			curl_setopt($httpRequest, CURLOPT_POST, 1);
+			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
+			curl_setopt($httpRequest, CURLOPT_URL, $url);
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
+			$result = curl_exec($httpRequest);
+			$resp[$positionObj->id] = "CREATE:SUCCESS";
+			curl_close($httpRequest);
 		}else if($dirty_action == "update"){
 			// Call update api with the data
 			error_log("Updating offline position [$positionObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/position/update.php';
-			$options = array(
-					'http' => array(
-							'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-							'method'  => 'POST',
-							'content' => json_encode($positionObj),
-					),
-			);
-			$context  = stream_context_create($options);
-			$response = file_get_contents($url, false, $context);
-			error_log($response);
+			$data = array('position' => $positionObj);
+			$httpRequest = curl_init();
+			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($httpRequest, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+			curl_setopt($httpRequest, CURLOPT_POST, 1);
+			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
+			curl_setopt($httpRequest, CURLOPT_URL, $url);
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
+			$result = curl_exec($httpRequest);
+			$resp[$positionObj->id] = "UPDATE:SUCCESS";
+			curl_close($httpRequest);
 		}else if($dirty_action == "remove"){
 			// Call remove api with the data
 			error_log("Removing offline position [$positionObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/position/remove.php';
-			$options = array(
-					'http' => array(
-							'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-							'method'  => 'POST',
-							'content' => json_encode($positionObj),
-					),
-			);
-			$context  = stream_context_create($options);
-			$response = file_get_contents($url, false, $context);
-			error_log($response);
+			$data = array('position' => $positionObj);
+			$httpRequest = curl_init();
+			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($httpRequest, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+			curl_setopt($httpRequest, CURLOPT_POST, 1);
+			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
+			curl_setopt($httpRequest, CURLOPT_URL, $url);
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
+			$result = curl_exec($httpRequest);
+			$resp[$positionObj->id] = "REMOVE:SUCCESS";
+			curl_close($httpRequest);
 		}
 	}
 ?>
