@@ -21,6 +21,7 @@
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
 			$resp[$areaObj->id] = "SUCCESS";
+			error_log($resp);
 			curl_close($httpRequest);
 		}else if($dirty_action == "update"){
 			// Call update api with the data
@@ -36,6 +37,7 @@
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
 			$resp[$areaObj->id] = "SUCCESS";
+			error_log($resp);
 			curl_close($httpRequest);
 		}else if($dirty_action == "remove"){
 			// Call remove api with the data
@@ -51,6 +53,7 @@
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
 			$resp[$areaObj->id] = "SUCCESS";
+			error_log($resp);
 			curl_close($httpRequest);
 		}
 	}
