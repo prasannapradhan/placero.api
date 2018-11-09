@@ -2,6 +2,8 @@
 	header ( "Access-Control-Allow-Origin: *" );
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
+	error_log(print_r($_POST, true));
+	
 	$area = $_POST['area'];
 	$areaObj = json_decode($area);
 	
