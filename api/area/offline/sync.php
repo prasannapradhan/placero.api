@@ -23,6 +23,7 @@
 		}else if($dirty_action == "update"){
 			// Call update api with the data
 			error_log("Updating offline area [$areaObj->id]");
+			$data = array('area' => json_encode($areaObj));
 			$url = 'http://api.placero.pearnode.com/api/area/update.php';
 			$httpRequest = curl_init();
 			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
@@ -30,13 +31,14 @@
 			curl_setopt($httpRequest, CURLOPT_POST, 1);
 			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
-			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($areaObj));
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, $data);
 			$result = curl_exec($httpRequest);
 			curl_close($httpRequest);
 			echo json_encode($result);
 		}else if($dirty_action == "remove"){
 			// Call remove api with the data
 			error_log("Removing offline area [$areaObj->id]");
+			$data = array('area' => json_encode($areaObj));
 			$url = 'http://api.placero.pearnode.com/api/area/remove.php';
 			$httpRequest = curl_init();
 			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
@@ -44,7 +46,7 @@
 			curl_setopt($httpRequest, CURLOPT_POST, 1);
 			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
-			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($areaObj));
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, $data);
 			$result = curl_exec($httpRequest);
 			curl_close($httpRequest);
 			echo json_encode($result);
