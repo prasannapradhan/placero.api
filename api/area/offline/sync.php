@@ -9,44 +9,44 @@
 			// Call create api with the data
 			error_log("Creating new offline area [$areaObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/area/create.php';
-			$options = array(
-					'http' => array(
-							'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-							'method'  => 'POST',
-							'content' => json_encode($areaObj),
-					),
-			);
-			$context  = stream_context_create($options);
-			$response = file_get_contents($url, false, $context);
-			error_log($response);
+			$httpRequest = curl_init();
+			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($httpRequest, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+			curl_setopt($httpRequest, CURLOPT_POST, 1);
+			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
+			curl_setopt($httpRequest, CURLOPT_URL, $url);
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($areaObj));
+			$result = curl_exec($httpRequest);
+			curl_close($httpRequest);
+			echo json_encode($result);
 		}else if($dirty_action == "update"){
 			// Call update api with the data
 			error_log("Updating offline area [$areaObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/area/update.php';
-			$options = array(
-					'http' => array(
-							'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-							'method'  => 'POST',
-							'content' => json_encode($areaObj),
-					),
-			);
-			$context  = stream_context_create($options);
-			$response = file_get_contents($url, false, $context);
-			error_log($response);
+			$httpRequest = curl_init();
+			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($httpRequest, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+			curl_setopt($httpRequest, CURLOPT_POST, 1);
+			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
+			curl_setopt($httpRequest, CURLOPT_URL, $url);
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($areaObj));
+			$result = curl_exec($httpRequest);
+			curl_close($httpRequest);
+			echo json_encode($result);
 		}else if($dirty_action == "remove"){
 			// Call remove api with the data
 			error_log("Removing offline area [$areaObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/area/remove.php';
-			$options = array(
-					'http' => array(
-							'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-							'method'  => 'POST',
-							'content' => json_encode($areaObj),
-					),
-			);
-			$context  = stream_context_create($options);
-			$response = file_get_contents($url, false, $context);
-			error_log($response);
+			$httpRequest = curl_init();
+			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($httpRequest, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+			curl_setopt($httpRequest, CURLOPT_POST, 1);
+			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
+			curl_setopt($httpRequest, CURLOPT_URL, $url);
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($areaObj));
+			$result = curl_exec($httpRequest);
+			curl_close($httpRequest);
+			echo json_encode($result);
 		}
 	}
 ?>
