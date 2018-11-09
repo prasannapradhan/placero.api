@@ -32,6 +32,7 @@
 			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
+			error_log(json_encode($data));
 			$result = curl_exec($httpRequest);
 			curl_close($httpRequest);
 			echo json_encode($result);

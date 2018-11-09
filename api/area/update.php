@@ -3,6 +3,8 @@
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
 	error_log(print_r($_POST, true));
+	$jsonStr = file_get_contents("php://input");
+	error_log($jsonStr);
 	
 	$area = $_POST['area'];
 	$areaObj = json_decode($area);
