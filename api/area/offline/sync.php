@@ -8,6 +8,7 @@
 		if($dirty_action == "create"){
 			// Call create api with the data
 			error_log("Creating new offline area [$areaObj->id]");
+			$data = array('area' => json_encode($areaObj));
 			$url = 'http://api.placero.pearnode.com/api/area/create.php';
 			$httpRequest = curl_init();
 			curl_setopt($httpRequest, CURLOPT_RETURNTRANSFER, 1);
@@ -15,7 +16,7 @@
 			curl_setopt($httpRequest, CURLOPT_POST, 1);
 			curl_setopt($httpRequest, CURLOPT_HEADER, 1);
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
-			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($areaObj));
+			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, $data);
 			$result = curl_exec($httpRequest);
 			curl_close($httpRequest);
 			echo json_encode($result);
