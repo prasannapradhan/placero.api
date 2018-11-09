@@ -19,8 +19,6 @@
 		$areaAddress = $areaObj->address;
 		$address_text = $areaAddress->storable;
 		$aaTags = $areaAddress->tags;
-	}else {
-		$aaTags = $areaObj->tags;
 	}
 	
 	$areaMeasure = $areaObj->measure;
