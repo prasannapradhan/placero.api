@@ -5,21 +5,27 @@
 	if(isset($_POST['area'])){
 		$area = $_POST['area'];
 		$areaObj = json_decode($area);
-		error_log("Getting area object as post param [".print_r($areaObj, true)."]");
 	}else {
 		$jsonInput = file_get_contents("php://input");
 		$inputObj = json_decode($jsonInput);
 		$areaObj = $inputObj->area;
-		error_log("Getting area object as input [".print_r($areaObj, true)."]");
 	}
 	
-	$areaAddress = $areaObj->address;
-	$aaTags = $areaAddress->tags;
+	$address_text = '';
+	$aaTags = array();
+	if(property_exists($areaObj, 'address')){
+		$areaAddress = $areaObj->address;
+		$address_text = $areaAddress->storable;
+		$aaTags = $areaAddress->tags;
+	}else {
+		$aaTags = $areaObj->tags;
+	}
+	
 	$areaMeasure = $areaObj->measure;
 	$areaCenter = $areaObj->centerPosition;
 
 	$area_update_sql = "update area SET center_lon='$areaCenter->lng', center_lat='$areaCenter->lat',description='$areaObj->description',
-		name='$areaObj->name',msqft='$areaMeasure->sqFeet',address='$areaAddress->storable' where id='$areaObj->id'";
+		name='$areaObj->name',msqft='$areaMeasure->sqFeet',address='$address_text' where id='$areaObj->id'";
 	error_log($area_update_sql);
 	mysql_query($area_update_sql);
 	
@@ -36,7 +42,7 @@
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
 	$resp ['status_msg'] = 'Area updated successfully';
-	$resp ['ret_obj'] = $area;
+	$resp ['ret_obj'] = $areaObj;
 	
 	echo json_encode($resp);
 ?>
