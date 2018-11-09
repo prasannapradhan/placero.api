@@ -8,7 +8,8 @@
 		error_log("Getting area object as post param [".print_r($areaObj, true)."]");
 	}else {
 		$jsonInput = file_get_contents("php://input");
-		$areaObj = json_decode($jsonInput);
+		$inputObj = json_decode($jsonInput);
+		$areaObj = $inputObj->area;
 		error_log("Getting area object as input [".print_r($areaObj, true)."]");
 	}
 	
