@@ -5,7 +5,7 @@
 	$medias = json_decode($_POST['medias']);
 	foreach ($medias as $mediaObj) {
 		$dirty_action = $mediaObj->dirtyAction;
-		if($dirty_action == "create"){
+		if($dirty_action == "insert"){
 			// Call create api with the data
 			error_log("Creating new offline media [$mediaObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/media/create.php';

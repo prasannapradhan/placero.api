@@ -5,7 +5,7 @@
 	$positions = json_decode($_POST['positions']);
 	foreach ($positions as $positionObj) {
 		$dirty_action = $positionObj->dirtyAction;
-		if($dirty_action == "create"){
+		if($dirty_action == "insert"){
 			// Call create api with the data
 			error_log("Creating new offline position [$positionObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/position/create.php';

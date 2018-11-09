@@ -7,7 +7,7 @@
 	$resp = array();
 	foreach ($areas as $areaObj) {
 		$dirty_action = $areaObj->dirtyAction;
-		if($dirty_action == "create"){
+		if($dirty_action == "insert"){
 			// Call create api with the data
 			error_log("Creating new offline area [$areaObj->id]");
 			$data = array('area' => $areaObj);
