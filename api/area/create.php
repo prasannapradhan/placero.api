@@ -37,7 +37,7 @@
 	$resp = array ();
 	$resp ['status_code'] = 'SUCCESS';
 	$resp ['status_msg'] = 'Area created successfully';
-	$resp ['ret_obj'] = $area;
+	$resp ['ret_obj'] = $areaObj;
 	
 	echo json_encode($resp);
 ?>
