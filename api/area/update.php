@@ -5,9 +5,11 @@
 	if(isset($_POST['area'])){
 		$area = $_POST['area'];
 		$areaObj = json_decode($area);
+		error_log("Getting area object as post param [".print_r($areaObj, true)."]");
 	}else {
 		$jsonInput = file_get_contents("php://input");
 		$areaObj = json_decode($jsonInput);
+		error_log("Getting area object as input [".print_r($areaObj, true)."]");
 	}
 	
 	$areaAddress = $areaObj->address;
