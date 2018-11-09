@@ -21,7 +21,6 @@
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
 			$resp[$areaObj->id] = "SUCCESS";
-			error_log(print_r($resp, true));
 			curl_close($httpRequest);
 		}else if($dirty_action == "update"){
 			// Call update api with the data
@@ -37,7 +36,6 @@
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
 			$resp[$areaObj->id] = "SUCCESS";
-			error_log(print_r($resp, true));
 			curl_close($httpRequest);
 		}else if($dirty_action == "remove"){
 			// Call remove api with the data
@@ -53,14 +51,14 @@
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
 			$resp[$areaObj->id] = "SUCCESS";
-			error_log(print_r($resp, true));
 			curl_close($httpRequest);
 		}
 	}
 	
 	$result = array ();
 	$result['status_code'] = 'SUCCESS';
-	$result['status_msg'] = 'Sync performed successfully';
+	$result['status_msg'] = 'Area Sync performed successfully';
 	$result['ret_obj'] = $resp;
 	
+	echo json_encode($result);
 ?>

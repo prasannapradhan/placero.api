@@ -52,4 +52,12 @@
 			curl_close($httpRequest);
 		}
 	}
+	
+	$result = array ();
+	$result['status_code'] = 'SUCCESS';
+	$result['status_msg'] = 'Media Sync performed successfully';
+	$result['ret_obj'] = $resp;
+	
+	echo json_encode($result);
+	
 ?>
