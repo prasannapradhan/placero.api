@@ -11,6 +11,8 @@
 		$areaObj = $inputObj->area;
 	}
 	
+	error_log(json_encode($areaObj));
+	
 	$address_text = '';
 	$aaTags = array();
 	if(property_exists($areaObj, 'address')){
