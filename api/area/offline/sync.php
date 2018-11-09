@@ -3,7 +3,6 @@
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
 	$areas = json_decode($_POST['areas']);
-	error_log(json_encode($areas));
 	$resp = array();
 	foreach ($areas as $areaObj) {
 		$dirty_action = $areaObj->dirtyAction;

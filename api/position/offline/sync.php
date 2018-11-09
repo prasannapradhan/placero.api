@@ -3,6 +3,7 @@
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
 	$positions = json_decode($_POST['positions']);
+	$resp = array();
 	foreach ($positions as $positionObj) {
 		$dirty_action = $positionObj->dirtyAction;
 		if($dirty_action == "insert"){

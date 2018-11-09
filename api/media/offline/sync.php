@@ -3,6 +3,7 @@
 	include ($_SERVER ["DOCUMENT_ROOT"] . "/connection/cmaster.php");
 	
 	$medias = json_decode($_POST['medias']);
+	$resp = array();
 	foreach ($medias as $mediaObj) {
 		$dirty_action = $mediaObj->dirtyAction;
 		if($dirty_action == "insert"){
