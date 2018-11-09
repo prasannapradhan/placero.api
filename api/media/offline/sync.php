@@ -18,7 +18,7 @@
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
-			$resp[$mediaObj->id] = "CREATE:SUCCESS";
+			$resp[$mediaObj->id] = "SUCCESS";
 			curl_close($httpRequest);
 		}else if($dirty_action == "update"){
 			// Call update api with the data
@@ -33,7 +33,7 @@
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
-			$resp[$mediaObj->id] = "UPDATE:SUCCESS";
+			$resp[$mediaObj->id] = "SUCCESS";
 			curl_close($httpRequest);
 		}else if($dirty_action == "remove"){
 			// Call remove api with the data
@@ -48,7 +48,7 @@
 			curl_setopt($httpRequest, CURLOPT_URL, $url);
 			curl_setopt($httpRequest, CURLOPT_POSTFIELDS, json_encode($data));
 			$result = curl_exec($httpRequest);
-			$resp[$mediaObj->id] = "REMOVE:SUCCESS";
+			$resp[$mediaObj->id] = "SUCCESS";
 			curl_close($httpRequest);
 		}
 	}
