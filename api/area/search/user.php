@@ -14,7 +14,11 @@
 		$area_qry = "select * from area where id='$area_id'";
 		error_log("Area detail query [$area_qry]");
 		$area_result = mysql_query($area_qry);
-		$area_record['detail'] = mysql_fetch_object($area_result);
+		$detailObj = mysql_fetch_object($area_result);
+		if($detailObj == false){
+			continue;
+		}
+		$area_record['detail'] = $detailObj;
 		$area_record['permission'] = $row;
 		mysql_free_result($area_result);
 		
