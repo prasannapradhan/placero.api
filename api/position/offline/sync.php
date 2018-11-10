@@ -6,7 +6,7 @@
 	$resp = array();
 	foreach ($positions as $positionObj) {
 		$dirty_action = $positionObj->dirtyAction;
-		if($dirty_action == "insert"){
+		if($dirty_action == "create"){
 			// Call create api with the data
 			error_log("Creating new offline position [$positionObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/position/create.php';
@@ -36,7 +36,7 @@
 			$result = curl_exec($httpRequest);
 			$resp[$positionObj->id] = "SUCCESS";
 			curl_close($httpRequest);
-		}else if($dirty_action == "remove"){
+		}else if($dirty_action == "delete"){
 			// Call remove api with the data
 			error_log("Removing offline position [$positionObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/position/remove.php';

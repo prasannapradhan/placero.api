@@ -6,7 +6,7 @@
 	$resp = array();
 	foreach ($areas as $areaObj) {
 		$dirty_action = $areaObj->dirtyAction;
-		if($dirty_action == "insert"){
+		if($dirty_action == "create"){
 			// Call create api with the data
 			error_log("Creating new offline area [".json_encode($areaObj)."]");
 			$data = array('area' => $areaObj);
@@ -36,7 +36,7 @@
 			$result = curl_exec($httpRequest);
 			$resp[$areaObj->id] = "SUCCESS";
 			curl_close($httpRequest);
-		}else if($dirty_action == "remove"){
+		}else if($dirty_action == "delete"){
 			// Call remove api with the data
 			error_log("Removing offline area [$areaObj->id]");
 			$data = array('area' => $areaObj);

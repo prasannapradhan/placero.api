@@ -6,7 +6,7 @@
 	$resp = array();
 	foreach ($medias as $mediaObj) {
 		$dirty_action = $mediaObj->dirtyAction;
-		if($dirty_action == "insert"){
+		if($dirty_action == "create"){
 			// Call create api with the data
 			error_log("Creating new offline media [$mediaObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/media/create.php';
@@ -36,7 +36,7 @@
 			$result = curl_exec($httpRequest);
 			$resp[$mediaObj->id] = "SUCCESS";
 			curl_close($httpRequest);
-		}else if($dirty_action == "remove"){
+		}else if($dirty_action == "delete"){
 			// Call remove api with the data
 			error_log("Removing offline media [$mediaObj->id]");
 			$url = 'http://api.placero.pearnode.com/api/media/remove.php';
