@@ -11,7 +11,7 @@
 		$posObj = $inputObj->area;
 	}
 	
-	$update_sql = "update position set description='$posObj->description', tags='$posObj->tags', 
+	$update_sql = "update position set name='$posObj->name', description='$posObj->description', tags='$posObj->tags', 
 				   type='$posObj->type' where id='$posObj->id'";
 	error_log($update_sql);
 	mysql_query($update_sql);
