@@ -26,11 +26,13 @@
 	$area_insert_sql = "insert into area (id,deviceID,center_lon,center_lat,description,name,createdBy,msqft,address,type) 
 		values('$areaObj->id','','$areaCenter->lng','$areaCenter->lat','$areaObj->description','$areaObj->name',
 		'$areaObj->createdBy','$areaMeasure->sqFeet','$address_text','$areaObj->type')";
+	error_log($area_insert_sql);
 	mysql_query ($area_insert_sql);
 	
 	foreach ($areaPermissions as $permission) {
 		$area_share_insert_sql = "insert into area_share (source_user,area_id,function_codes) 
 			values ('$permission->userId','$permission->areaId','$permission->functionCode')";
+		error_log($area_share_insert_sql);
 		mysql_query($area_share_insert_sql);
 	}
 	
