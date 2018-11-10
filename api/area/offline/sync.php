@@ -8,7 +8,7 @@
 		$dirty_action = $areaObj->dirtyAction;
 		if($dirty_action == "insert"){
 			// Call create api with the data
-			error_log("Creating new offline area [$areaObj->id]");
+			error_log("Creating new offline area [".json_encode($areaObj)."]");
 			$data = array('area' => $areaObj);
 			$url = 'http://api.placero.pearnode.com/api/area/create.php';
 			$httpRequest = curl_init();
